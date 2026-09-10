@@ -17,7 +17,7 @@ public static class MyPlayerCollectionPatch
     public static bool SendDirtyBlockLimitsPrefix()
     {
         // Use the config to enable patches corresponding to your plugin's features
-        if (!Config.Toggle)
+        if (!Config.Enabled)
             return true;
         
         // Your logic to run before or instead the original method implementation.
@@ -33,7 +33,7 @@ public static class MyPlayerCollectionPatch
     public static void SendDirtyBlockLimitsPostfix()
     {
         // Use the config to enable patches corresponding to your plugin's features
-        if (!Config.Toggle)
+        if (!Config.Enabled)
             return;
         
         // Your logic to run after the original method implementation.
