@@ -27,7 +27,7 @@ public static class MyPhysicsPatch
         // Alternatively patch unconditionally, but make the functionality configurable
         // inside your logic, so changing the config does not need restarting the game.
         // There is a trade-off with performance and plugin compatibility here.
-        if (!Config.Toggle)
+        if (!Config.Enabled)
             return instructions;
         
         // This call will create a .il file next to this patch file with the original

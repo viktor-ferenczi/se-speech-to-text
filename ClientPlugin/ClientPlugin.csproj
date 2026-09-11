@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <RootNamespace>ClientPlugin</RootNamespace>
-    <AssemblyName>SpeechRecognition</AssemblyName>
+    <AssemblyName>SpeechToText</AssemblyName>
     <LangVersion>14</LangVersion>
       
     <!-- Target platforms on Windows and Linux -->
@@ -236,6 +236,13 @@
     </Reference>
   </ItemGroup>
 
+  <!-- The Handy paste hooks ship next to the plugin assembly: the config dialog
+       derives their path from the location of this assembly. -->
+  <ItemGroup>
+    <PasteScript Include="$(RepoRoot)Scripts$(PathSeparator)*" />
+    <None Include="@(PasteScript)" TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.4.2" />
     <PackageReference Include="Mono.Cecil" Version="0.11.6" />
@@ -303,6 +310,8 @@
           SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFiles="$(PluginDirectory)$(PathSeparator)plugin.pdb" />
     <Copy Condition="'$(PluginDirectory)' != '' And Exists('$(PluginDataFile)')"
           SourceFiles="$(PluginDataFile)" DestinationFiles="$(PluginDirectory)$(PathSeparator)plugin.xml" />
+    <Copy Condition="'$(PluginDirectory)' != ''"
+          SourceFiles="@(PasteScript)" DestinationFolder="$(PluginDirectory)" />
     <Message Condition="'$(PluginDirectory)' != ''" Importance="high"
              Text="Deployed the $(TargetFramework) build to &quot;$(PluginDirectory)&quot;" />
   </Target>
