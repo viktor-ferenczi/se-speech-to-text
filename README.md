@@ -30,9 +30,8 @@ its own first, and only then point it at the game.
    `brew install --cask handy`, on Windows `winget install cjpais.Handy`), launch it and grant the
    permissions it asks for: the microphone, and accessibility so it may paste into other
    applications.
-2. In Handy's Settings choose a transcription model - a Whisper model (Small/Medium/Turbo/Large,
-   GPU accelerated where available) or Parakeet V3, which runs on the CPU and detects the language
-   by itself.
+2. In Handy's Settings choose a suitable transcription model like Parakeet V2 or Parakeet V3.
+   Also disable unloading the model when not used to avoid lag.
 3. Set the keyboard shortcut to dictate with. Hold it while speaking and release, or tap it to
    toggle recording, depending on the mode you pick.
 4. Test it in a text editor: press the shortcut, say a sentence, release, and the text should
