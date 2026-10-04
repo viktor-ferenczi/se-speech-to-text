@@ -10,6 +10,13 @@ Connects the [Handy](https://github.com/cjpais/Handy) speech to text application
   [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - [Handy](https://github.com/cjpais/Handy)
 
+## Building
+
+The Handy paste scripts ship next to the plugin DLL, so this plugin runs from a build deployed into
+Pulsar's `Local` plugin folder, not from a development folder. Builds deploy only if the Pulsar
+folder is set: run `setup.py`, set `Pulsar` in `Directory.Build.props.user` (for example
+`$(HOME)/.config/Pulsar` on Linux or `$(APPDATA)\Pulsar` on Windows), then build the solution.
+
 ## Features
 
 - Two ways to connect Handy: an external paste script (separate for Linux and Windows),
